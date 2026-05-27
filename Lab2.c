@@ -5,8 +5,21 @@
 bool checkValid(char str[]) {
     int len = strlen(str);
 
+    // Check for invalid characters
+    for (int i = 0; i < len; i++) {
+        if (str[i] != 'a' && str[i] != 'b' && str[i] != 'e') {
+            return false;
+        }
+    }
+
+    // Handle epsilon (e = empty string)
+    if (len == 1 && str[0] == 'e') {
+        return false; // epsilon is invalid for this language
+    }
+
+    // Normal case
     if (len < 2)
-        return false; // cannot satisfy start/end different
+        return false;
 
     char start = str[0];
     char end = str[len - 1];
